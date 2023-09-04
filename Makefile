@@ -10,6 +10,7 @@ VENV_NAME = venv
 .PHONY: help
 help:
 	@echo "Available commands:"
+
 	@echo "  make prepare env=venv           Create a virtual environment"
 	@echo "  make install        Install project dependencies"
 	@echo "  make run            Run the Flask app in the virtual environment"
@@ -17,28 +18,26 @@ help:
 	@echo "  make git-commit     Commit changes to Git"
 	@echo "  make git-push       Push changes to Git"
 	@echo "  make git-pull       Pull changes from Git"
+	@echo "  make compose ENV=dev" Create Docker Compose file ENV=prd/test
 
 # Define a rule for virtualenv prepare
 prepare:
 	# Check if the virtual environment directory exists
-	EXIST = $(shell [ -d "$(ENV)" ] && echo "yes" || echo "no")
-	# If not, create the virtual environment
-	if [ "$(EXIST)" = "no" ]; then \
-		@echo --------------------
-		@echo Creating virtualenv
-		@echo --------------------
-		virtualenv $(ENV)
+	if [ ! -d "$(ENV)" ]; then \
+		echo "-------------------"; \
+		echo "Creating virtualenv"; \
+		echo "-------------------"; \
+		virtualenv $(ENV); \
 	fi
-	# Activate the virtual environment
-	source $(ENV)/bin/activate
-	# Install the requirements from the requirements.txt file
-	pip install -r requirements.txt
+	# Activate the virtual environment and install requirements using the script
+	./init.sh $(ENV)
+
 
 
 # Alternatively, define a rule for running docker compose with a variable argument
 compose:
 	# Run docker compose with the specified configuration and environment files
-	docker compose -f "docker-compose-$(env).yaml" --env-file $(env).env up -d --build
+	docker compose -f "./app/docker-compose-$(ENV).yaml" --env-file ./app/$(ENV).env up -d --build
 
 git-commit:
 	@echo "Committing changes to Git..."
@@ -53,7 +52,8 @@ git-pull:
 	@echo "Pulling changes from Git..."
 	git pull
 
-
+test:
+	python -m pytest
 
 
 
