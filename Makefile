@@ -42,7 +42,7 @@ compose:
 git-commit:
 	@echo "Committing changes to Git..."
 	git add .
-	git commit -m "Update: `date +'%Y-%m-%d %H:%M:%S'`"
+	git commit -m "Update: `date +'%Y-%m-%d %H:%M:%S'` "
 
 git-push:
 	@echo "Pushing changes to Git..."
