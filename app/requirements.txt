@@ -1,0 +1,17 @@
+Flask   
+Flask-SQLAlchemy
+Flask-Migrate
+Flask-WTF
+Faker
+flask_jwt_extended 
+flask_migrate
+flask_restful 
+flask_marshmallow
+requests
+marshmallow-sqlalchemy
+numpy
+gunicorn
+psycopg2-binary==2.9.7
+flask-testing 
+coverage
+pytest-cov

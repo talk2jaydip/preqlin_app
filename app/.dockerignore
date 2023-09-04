@@ -1,0 +1,26 @@
+# Exclude common development and system files
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+#*.db
+*.sqlite3
+
+# Exclude virtual environment folders
+venv/
+env/
+.venv/
+.venv*/
+
+# Exclude version control files
+.git
+.gitignore
+
+# Exclude Docker-related files
+Dockerfile
+.dockerignore
+# Exclude test files and directories
+tests/
+test_*.py
+
+# Exclude any other files or directories not needed in the image

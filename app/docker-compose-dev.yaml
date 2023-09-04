@@ -1,0 +1,36 @@
+version: '3'
+services:
+  webapp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - FLASK_PORT=${FLASK_PORT}
+    command: gunicorn --bind 0.0.0.0:${FLASK_PORT} -w 4 --preload run:app
+    environment:
+      - FLASK_ENV=dev
+      - POSTGRES_HOST=localhost
+      - POSTGRES_PORT=5432
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=dev  # Specify the name of your database
+    ports:
+      - "${FLASK_PORT}:${FLASK_PORT}"
+    env_file:
+      - ./dev.env
+    # volumes:
+    #   - .:/app  # Map the app directory to /app in the container
+    depends_on:
+      -   postgres_db_dev
+      -   sqlite-db
+
+  postgres_db_dev:
+    image: postgres:13
+    container_name: postgres_server_dev
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: dev  # Specify the name of your database
+  sqlite-db:
+    image: jitesoft/sqlite:latest
+    
