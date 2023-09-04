@@ -1,3 +1,40 @@
+##  Project Directory Structure
+This document provides an overview of the directory structure for  project. It outlines the purpose of each file and directory in the project.
+
+    | ./
+    | .dockerignore            # Configuration for Docker to ignore specific files
+    | .gitignore               # Configuration for Git to ignore specific files
+    | api_usage.ipynb          # Jupyter Notebook for API usage examples
+    | blacklist.py             # Module for managing blacklisted tokens
+    | config.py                # Configuration file for your Flask app
+    | dev.env                  # Environment variables for development
+    | docker-compose-dev.yaml  # Docker Compose configuration for development environment
+    | docker-compose-prd.yaml  # Docker Compose configuration for production environment
+    | Dockerfile               # Dockerfile for building your Flask app image
+    | prod.env                 # Environment variables for production
+    | requirements.txt         # List of Python dependencies for your app
+    | run.py                   # Entry point for running your Flask app
+    | setup.py                 # Setup script for your Python package
+    | __init__.py
+
+    | my_app/                  # Main directory for your Flask app
+    |     __init__.py
+    |     models/              # Directory for database models
+    |     |   user.py          # Model for user data
+    |     |   __init__.py
+    |     resources/           # Directory for API resources
+    |     |   random_array.py  # Resource for generating random arrays
+    |     |   user.py          # Resource for user-related endpoints
+    |     |   __init__.py
+    |     schemas/             # Directory for data schemas
+    |     |   user.py          # Schema for user data
+    |     |   __init__.py
+
+    | tests/                   # Directory for unit tests
+    |     test_endpoints.py    # Tests for API endpoints
+    |     __init__.py
+
+
 
 ## Components
 

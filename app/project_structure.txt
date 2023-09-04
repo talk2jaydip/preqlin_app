@@ -1,0 +1,14 @@
+Folder PATH listing for volume New Volume
+Volume serial number is 9690-5F59
+E:.
++---my_app
+¦   +---models
+¦   ¦   +---__pycache__
+¦   +---resources
+¦   ¦   +---__pycache__
+¦   +---schemas
+¦   ¦   +---__pycache__
+¦   +---__pycache__
++---tests
+¦   +---__pycache__
++---__pycache__
