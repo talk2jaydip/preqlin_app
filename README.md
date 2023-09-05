@@ -65,7 +65,7 @@ You can run this project either in a virtual environment or as a Docker containe
 4. **Run the Flask App**: To run the Flask app locally, execute the following command:
 
     ```bash
-    make start
+    make run
     ```
 
    The app will be available at `http://localhost:5000`.
@@ -110,7 +110,7 @@ You can run this project either in a virtual environment or as a Docker containe
     ```bash
     make stop
     ```
-
+[Example](https://github.com/talk2jaydip/preqlin_app/blob/master/app/api_usage.ipynb) 
 These instructions should help you run the project smoothly, whether you choose a virtual environment or a Docker container.
 
 ## Components

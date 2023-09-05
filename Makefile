@@ -60,9 +60,10 @@ git-pull:
 	git pull
 
 test:
-	python -m pytest /app/tests
+	python -m pytest app/tests
 
-
+run:
+	python app/run.py
 
 
 .PHONY: venv install run test docker-build docker-run docker-stop docker-clean git-commit git-push git-pull
