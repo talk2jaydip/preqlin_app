@@ -34,15 +34,22 @@ prepare:
 
 
 
-# Alternatively, define a rule for running docker compose with a variable argument
-compose:
+start:
 	# Run docker compose with the specified configuration and environment files
 	docker compose -f "./app/docker-compose-$(ENV).yaml" --env-file ./app/$(ENV).env up -d --build
+stop:
+	docker compose -f "./app/docker-compose-$(ENV).yaml" --env-file ./app/$(ENV).env down
+restart:
+	docker compose -f "./app/docker-compose-$(ENV).yaml" --env-file ./app/$(ENV).env down
+	docker compose -f "./app/docker-compose-$(ENV).yaml" --env-file ./app/$(ENV).env up -d --build
+
+
+
 
 git-commit:
 	@echo "Committing changes to Git..."
 	git add .
-	git commit -m "Update: `date +'%Y-%m-%d %H:%M:%S'` "
+	git commit -m "Update: `'%Y-%m-%d %H:%M:%S'`"
 
 git-push:
 	@echo "Pushing changes to Git..."
@@ -53,7 +60,8 @@ git-pull:
 	git pull
 
 test:
-	python -m pytest
+	python -m pytest /app/tests
+
 
 
 

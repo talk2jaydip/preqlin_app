@@ -34,7 +34,84 @@ This document provides an overview of the directory structure for  project. It o
     |     test_endpoints.py    # Tests for API endpoints
     |     __init__.py
 
+Certainly! Here's a more refined and clear "How to run" section for your README file:
 
+## How to Run
+
+You can run this project either in a virtual environment or as a Docker container. Below are instructions for both options:
+
+### Option 1: Virtual Environment
+
+1. **Clone the Repository**: Start by cloning this project's repository from GitHub to your local machine using the following command:
+
+    ```bash
+    git clone https://github.com/talk2jaydip/preqlin_app
+    ```
+
+2. **Create a Virtual Environment**: Navigate to the project directory and create a virtual environment (you can specify your environment name, e.g., `venv`) using:
+
+    ```bash
+    make prepare env=venv
+    ```
+
+   This command also installs the project dependencies.
+
+3. **Activate the Virtual Environment**: Activate the virtual environment with the following command:
+
+    ```bash
+    source venv/bin/activate
+    ```
+
+4. **Run the Flask App**: To run the Flask app locally, execute the following command:
+
+    ```bash
+    make start
+    ```
+
+   The app will be available at `http://localhost:5000`.
+
+5. **Run Unit Tests**: You can run the project's unit tests using:
+
+    ```bash
+    make test
+    ```
+
+6. **Deactivate the Virtual Environment**: When you're done, deactivate the virtual environment:
+
+    ```bash
+    deactivate
+    ```
+
+### Option 2: Docker Container
+
+1. **Clone the Repository**: If you haven't already, clone this project's repository from GitHub:
+
+    ```bash
+    git clone https://github.com/talk2jaydip/preqlin_app
+    ```
+
+2. **Create a Docker Compose File**: Generate a Docker Compose file for your desired environment (e.g., `dev`) using:
+
+    ```bash
+    make compose ENV=dev
+    ```
+
+
+3. **Run the Docker Container**: Start the Docker container with the following command:
+
+    ```bash
+    make start or make restart
+    ```
+
+   The app will be available at `http://localhost:8000`.
+
+4. **Stop the Docker Container**: To stop the Docker container, use:
+
+    ```bash
+    make stop
+    ```
+
+These instructions should help you run the project smoothly, whether you choose a virtual environment or a Docker container.
 
 ## Components
 

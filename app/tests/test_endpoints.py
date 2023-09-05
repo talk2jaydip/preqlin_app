@@ -42,7 +42,12 @@ class TestEndpoints(unittest.TestCase):
         access_token = json.loads(response.data)['access_token']
         return access_token
 
-
+    def test_user_existing_not_confirmed(self):
+        data = {"username": "testuser", "password": "testpassword", "email": "test@example.com"}
+        response = self.app.post('/register', data=json.dumps(data), content_type='application/json')
+        response_data = json.loads(response.data)
+        expected_data = {'message': 'Account created successfully, an email with an activation link has been sent to your email address, please check.'}
+        assert response_data == expected_data
 
     def test_user_register_existing(self):
         # Test the /register endpoint without authentication
@@ -50,8 +55,7 @@ class TestEndpoints(unittest.TestCase):
         response = self.app.post('/register', data=json.dumps(data), content_type='application/json')
         response_data = json.loads(response.data)
         expected_data = {"message": "A user with that username already exists."}
-        assert response_data == expected_data
-
+        assert response_data == expected_data 
     def test_user_get(self):
         # Test the /user/<int:user_id> endpoint with authentication
         access_token = self.get_access_token()
