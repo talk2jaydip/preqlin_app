@@ -15,3 +15,4 @@ psycopg2-binary==2.9.7
 flask-testing 
 coverage
 pytest-cov
+flask_cors

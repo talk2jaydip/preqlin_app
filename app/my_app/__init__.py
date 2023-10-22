@@ -7,6 +7,8 @@ from flask_restful import Api
 from flask_jwt_extended import JWTManager
 from marshmallow import ValidationError
 from flask_marshmallow import Marshmallow
+from flask_cors import CORS
+
 
 # Configure logging
 logging.basicConfig(format='%(asctime)s:%(levelname)s:%(name)s:%(message)s')
@@ -45,6 +47,9 @@ def create_app(object_name):
 
     # Create Flask app object with config object
     flask_app = Flask(__name__)
+    CORS(flask_app)
+
+    
     flask_app.config.from_object(object_name)
 
     # Use environment variable or random string for secret key
